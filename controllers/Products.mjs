@@ -16,7 +16,7 @@ export const addProducts = async (req, res) => {
   try {
     await product.save();
     res.status(201).json({
-      message: "produk berhasil di tambahkan",
+      message: "product added",
     });
   } catch (error) {
     res.status(500).json({
@@ -38,9 +38,9 @@ export const getProductById = async (req, res) => {
 
 export const updateProduct = async (req, res) => {
   try {
-    await Products.updateOne({_id: req.params.id}, req.body);
+    await Products.updateOne({ _id: req.params.id }, req.body);
     res.status(201).json({
-      message: "produk berhasil di update",
+      message: "product updated",
     });
   } catch (error) {
     res.status(500).json({
@@ -51,13 +51,9 @@ export const updateProduct = async (req, res) => {
 
 export const deleteProduct = async (req, res) => {
   try {
-    await Products.deleteOne({
-      where: {
-        _id: req.params.id,
-      },
-    });
+    await Products.findByIdAndDelete(req.params.id);
     res.status(201).json({
-      message: "produk berhasil di hapus",
+      message: "product removed",
     });
   } catch (error) {
     res.status(500).json({
