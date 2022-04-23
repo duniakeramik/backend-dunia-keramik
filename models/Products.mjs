@@ -7,7 +7,23 @@ const Products = mongoose.Schema({
   price: {
     type: Number,
   },
-  category: {
+  brand: {
+    type: String,
+  },
+  ukuran: {
+    type: String,
+  },
+  kategori: {
+    type: String,
+  },
+  tekstur: {
+    type: String,
+  },
+  isPromo: {
+    type: Boolean,
+    default: false,
+  },
+  image: {
     type: String,
   },
 });

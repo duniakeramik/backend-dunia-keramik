@@ -20,20 +20,13 @@ try {
 const app = express();
 const port = process.env.PORT || 5000;
 
-// get error on process
 process.on("unhandledRejection", (reason, promise) => {
   console.log("Unhandled Rejection at:", reason.stack || reason);
   // Recommended: send the information to sentry.io
   // or whatever crash reporting service you use
 });
 
-app.use(
-  cors({
-    credentials: true,
-    origin: process.env.FRONTEND_URL,
-    secure: process.env.NODE_ENV === "production",
-  })
-);
+app.use(cors());
 app.use(express.json());
 app.use(router);
 

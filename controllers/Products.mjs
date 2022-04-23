@@ -51,10 +51,63 @@ export const updateProduct = async (req, res) => {
 
 export const deleteProduct = async (req, res) => {
   try {
-    await Products.findByIdAndDelete(req.params.id);
-    res.status(201).json({
-      message: "product removed",
+    const product = await Products.findById(req.params.id);
+    if (!product) {
+      return res.status(404).json({
+        message: "product not found",
+      });
+    } else {
+      await Products.findByIdAndDelete(req.params.id);
+      res.status(201).json({
+        message: "product removed",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
     });
+  }
+};
+
+// filter product
+
+export const getProductByCategory = async (req, res) => {
+  try {
+    const product = await Products.find({ kategori: req.params.kategori });
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
+export const getProductByBrand = async (req, res) => {
+  try {
+    const product = await Products.find({ brand: req.params.brand });
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
+export const getProductByTekstur = async (req, res) => {
+  try {
+    const product = await Products.find({ tekstur: req.params.tekstur });
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
+export const getProductByUkuran = async (req, res) => {
+  try {
+    const product = await Products.find({ ukuran: req.params.ukuran });
+    res.status(200).json(product);
   } catch (error) {
     res.status(500).json({
       message: error.message,
