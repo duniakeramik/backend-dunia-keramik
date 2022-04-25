@@ -26,6 +26,15 @@ const Products = mongoose.Schema({
   image: {
     type: String,
   },
+  image2: {
+    type: String,
+  },
+  penggunaan: {
+    type: Array,
+  },
+  tag: {
+    type: Array,
+  },
 });
 
 export default mongoose.model("Products", Products);
