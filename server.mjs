@@ -28,7 +28,7 @@ try {
 const app = express();
 const port = process.env.PORT || 5000;
 
-cron.schedule("*/5 * * * *", () => {
+cron.schedule("* */6 * * *", () => {
   mongoose.connect(process.env.MONGO_CONNECTION);
   const db = mongoose.connection;
   db.collection("products")
