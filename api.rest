@@ -1,0 +1,11 @@
+POST http://localhost:5000/api/build/site
+ Content-Type: application/json
+
+ {
+    "name": "contoh website saja",
+    "primaryColor": "#888",
+    "secondaryColor": "#aaa",
+    "thirdColor": "#ddd",
+    "instagramUrl": "",
+    "facebookUrl": ""
+}
