@@ -8,6 +8,7 @@ export const createWeb = async (req, res) => {
     thirdColor,
     instagramUrl,
     facebookUrl,
+    noHP
   } = req.body;
 
   const opt = {
@@ -38,6 +39,7 @@ export const createWeb = async (req, res) => {
           REACT_APP_PRIMARY_COLOR: primaryColor,
           REACT_APP_SECONDARY_COLOR: secondaryColor,
           REACT_APP_THIRD_COLOR: thirdColor,
+          REACT_APP_WHATSSAPP: noHP
         },
       },
     },
